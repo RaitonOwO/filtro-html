@@ -5,21 +5,17 @@ body {
     background-color: gray;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-image: url(./imagenes/logo.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    text-align: center;
     min-height: 100vh;
 }
 
-p{
+p {
     color: white;
 }
-h2{
+
+h2 {
     color: white;
 }
+
 header {
     background-color: #333;
     color: white;
@@ -40,9 +36,9 @@ nav {
     padding: 10px 0;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     transition: background-color 0.3s ease;
+    position: sticky;
 }
 
 nav:hover {
@@ -63,8 +59,7 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-
-button{
+button {
     background-color: skyblue;
 }
 
@@ -75,19 +70,17 @@ button{
     }
 }
 
-.container-products{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+.container-products {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
 }
+
 .producto {
-    margin: 20px;
     padding: 10px;
     border: 1px solid white;
     border-radius: 8px;
     background-color: black;
-    width: calc(100% - 40px);
-    max-width: 300px;
     text-align: center;
     transition: transform 0.3s ease;
 }
@@ -103,20 +96,44 @@ button{
     transition: transform 0.3s ease;
 }
 
-
-
 @media (min-width: 600px) {
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    .container-products {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
 
+@media (min-width: 768px) {
+    body {
+        flex-direction: row;
+    }
+
+    nav {
+        width: 200px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    header {
+        width: calc(100% - 200px);
+        margin-left: 200px;
+    }
+
+    .container-products {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
 @media (min-width: 1024px) {
     nav a {
         padding: 10px 30px;
-        margin: 10px;
+        margin: 10px 0;
     }
 }
