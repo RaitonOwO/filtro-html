@@ -6,13 +6,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal en todo el documento */
 }
 
-p {
-    color: white;
-}
-
-h2 {
+p, h2 {
     color: white;
 }
 
@@ -35,9 +32,14 @@ nav {
     text-align: center;
     padding: 10px 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column; /* Cambiado a columna en todas las resoluciones */
+    justify-content: flex-start; /* Alineación al inicio del contenedor */
+    align-items: center; /* Centrado horizontalmente */
     transition: background-color 0.3s ease;
+    position: relative;
+    top: 0;
+    max-width: 20; /* Limita el ancho máximo del nav */
+    margin-right: auto; /* Empuja hacia la derecha para evitar que ocupe toda la pantalla */
 }
 
 nav:hover {
@@ -58,22 +60,11 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-button {
-    background-color: skyblue;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .container-products {
     display: grid;
     gap: 20px;
     padding: 20px;
-    grid-template-columns: 1fr; /* Para pantallas pequeñas */
+    width: 100%;
 }
 
 .producto {
@@ -109,14 +100,17 @@ button {
 
     nav {
         width: 200px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: center;
+        max-width: 100%; /* Ajuste para ocupar el ancho disponible */
+        height: 100vh; /* Altura total del viewport */
+        flex-direction: column; /* Ajuste a columna para todas las resoluciones */
+        align-items: center; /* Centrado horizontal */
         padding: 20px 0;
-        position: fixed;
+        position: sticky;
         top: 0;
-        left: 0;
-        z-index: 1000;
+    }
+
+    nav a {
+        padding: 10px 20px; 
     }
 
     header {
@@ -125,9 +119,9 @@ button {
     }
 
     .container-products {
-        margin-left: 200px;
         width: calc(100% - 200px);
-        grid-template-columns: repeat(2, 1fr); 
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -135,9 +129,5 @@ button {
     nav a {
         padding: 10px 30px;
         margin: 10px 0;
-    }
-
-    .container-products {
-        grid-template-columns: repeat(3, 1fr); 
     }
 }

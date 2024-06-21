@@ -8,11 +8,7 @@ body {
     min-height: 100vh;
 }
 
-p {
-    color: white;
-}
-
-h2 {
+p, h2 {
     color: white;
 }
 
@@ -35,10 +31,13 @@ nav {
     text-align: center;
     padding: 10px 0;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column; /* Cambiado a columna en todas las resoluciones */
+    justify-content: flex-start; /* Alineación al inicio del contenedor */
+    align-items: center; /* Centrado horizontalmente */
     transition: background-color 0.3s ease;
     position: sticky;
+    top: 0;
+    height: 100vh; /* Altura total del viewport */
 }
 
 nav:hover {
@@ -63,17 +62,11 @@ button {
     background-color: skyblue;
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .container-products {
     display: grid;
     gap: 20px;
     padding: 20px;
+    width: 100%;
 }
 
 .producto {
@@ -109,13 +102,16 @@ button {
 
     nav {
         width: 200px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Ajuste a columna para todas las resoluciones */
+        align-items: center; /* Centrado horizontal */
         padding: 20px 0;
+        position: sticky;
         top: 0;
-        left: 0;
-        z-index: 1000;
+        height: 100vh;
+    }
+
+    nav a {
+        padding: 10px 20px; 
     }
 
     header {
@@ -124,7 +120,6 @@ button {
     }
 
     .container-products {
-        margin-left: 200px;
         width: calc(100% - 200px);
         display: grid;
         grid-template-columns: repeat(3, 1fr);
